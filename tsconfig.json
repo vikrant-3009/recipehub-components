@@ -4,6 +4,7 @@
     "allowUnreachableCode": false,
     "declaration": false,
     "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
     "lib": [
       "dom",
       "es2022"

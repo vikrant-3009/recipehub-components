@@ -1,14 +1,312 @@
-<!DOCTYPE html>
+<!doctype html>
 <html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Stencil Component Starter</title>
 
+    <link rel="stylesheet" href="/build/recipe-ui-components.css" />
+
     <script type="module" src="/build/recipe-ui-components.esm.js"></script>
     <script nomodule src="/build/recipe-ui-components.js"></script>
   </head>
   <body>
-    <my-component first="Stencil" middle="'Don't call me a framework'" last="JS"></my-component>
+    <recipehub-header
+      brand-title="RecipeHub"
+      logo-src="/assets/recipehub-logo.svg"
+      generic-user-src="/assets/generic-user-icon.svg"
+      active-page="discover"
+      navigation-items='[
+        {"id":"0","label":"Discover","value":"discover","href":"/discover"},
+        {"id":"1","label":"Favorites","value":"favorites","href":"/favorites"},
+        {"id":"2","label":"Meal Planner","value":"meal-planner","href":"/meal-planner"},
+        {"id":"3","label":"My Recipes","value":"my-recipes","href":"/my-recipes"}
+      ]'
+      on:navigationChange="{handleNavigation}"
+      on:notificationIconClick="{handleNotificationClick}"
+      on:profileIconClick="{handleProfileClick}"
+    >
+    </recipehub-header>
+
+    <!-- <recipehub-hero hero-title="What are you cooking today?" placeholder="Search your favorite recipes..." button-label="Search"></recipehub-hero> -->
+
+    <!-- <recipehub-category-section
+      categories='
+        [
+          {
+            "id": "1",
+            "name": "Beef",
+            "imageSrc": "https://www.themealdb.com/images/category/beef.png",
+            "description": "Beef is the culinary name for meat from cattle, particularly skeletal muscle. Humans have been eating beef since prehistoric times.[1] Beef is a source of high-quality protein and essential nutrients.[2]"
+          },
+          {
+            "id": "2",
+            "name": "Chicken",
+            "imageSrc": "https://www.themealdb.com/images/category/chicken.png",
+            "description": "Chicken is a type of domesticated fowl, a subspecies of the red junglefowl. It is one of the most common and widespread domestic animals, with a total population of more than 19 billion as of 2011.[1] Humans commonly keep chickens as a source of food and, more rarely, as pets."
+          },
+          {
+            "id": "3",
+            "name": "Dessert",
+            "imageSrc": "https://www.themealdb.com/images/category/dessert.png",
+            "description": "Dessert is a course that concludes a meal. The course usually consists of sweet foods, such as confections dishes or fruit, and possibly a beverage such as dessert wine or liqueur."
+          },
+          {
+            "id": "4",
+            "name": "Lamb",
+            "imageSrc": "https://www.themealdb.com/images/category/lamb.png",
+            "description": "Lamb, hogget, and mutton are the meat of domestic sheep (species Ovis aries) at different ages."
+          },
+          {
+            "id": "5",
+            "name": "Miscellaneous",
+            "imageSrc": "https://www.themealdb.com/images/category/miscellaneous.png",
+            "description": "General foods that do not fit into another category"
+          },
+          {
+            "id": "6",
+            "name": "Pasta",
+            "imageSrc": "https://www.themealdb.com/images/category/pasta.png",
+            "description": "Pasta is a staple food of traditional Italian cuisine, with the first reference dating to 1154 in Sicily."
+          }
+        ]
+      '
+    ></recipehub-category-section> -->
+
+    <!-- <recipehub-cuisine-section
+      cuisines='
+        [
+          {
+            "id": "1",
+            "name": "Indian",
+            "area": "Indian",
+            "country": "India"
+          },
+          {
+            "id": "2",
+            "name": "Mexican",
+            "area": "Mexican",
+            "country": "Mexico"
+          },
+          {
+            "id": "3",
+            "name": "Afghan",
+            "area": "Afghan",
+            "country": "Afghanistan"
+          },
+          {
+            "id": "4",
+            "name": "Thai",
+            "area": "Thai",
+            "country": "Thailand"
+          },
+          {
+            "id": "5",
+            "name": "Chinese",
+            "area": "Chinese",
+            "country": "China"
+          },
+          {
+            "id": "6",
+            "name": "Italian",
+            "area": "Italian",
+            "country": "Italy"
+          }
+        ]
+      '
+    ></recipehub-cuisine-section> -->
+
+    <!-- Category Page (when user clicks on view more categories) -->
+    <!-- Add the heading for Categories page in SvelteKit CSS -->
+    <!-- Ex:
+    <section class="page-intro">
+      <h1>Explore Categories</h1>
+      <p>Browse recipes by category and find something delicious to make.</p>
+    </section> -->
+    <!-- <recipehub-category-grid
+      categories='
+        [
+          {
+            "id": "1",
+            "name": "Beef",
+            "imageSrc": "https://www.themealdb.com/images/category/beef.png",
+            "description": "Beef is the culinary name for meat from cattle, particularly skeletal muscle. Humans have been eating beef since prehistoric times.[1] Beef is a source of high-quality protein and essential nutrients.[2]"
+          },
+          {
+            "id": "2",
+            "name": "Chicken",
+            "imageSrc": "https://www.themealdb.com/images/category/chicken.png",
+            "description": "Chicken is a type of domesticated fowl, a subspecies of the red junglefowl. It is one of the most common and widespread domestic animals, with a total population of more than 19 billion as of 2011.[1] Humans commonly keep chickens as a source of food and, more rarely, as pets."
+          },
+          {
+            "id": "3",
+            "name": "Dessert",
+            "imageSrc": "https://www.themealdb.com/images/category/dessert.png",
+            "description": "Dessert is a course that concludes a meal. The course usually consists of sweet foods, such as confections dishes or fruit, and possibly a beverage such as dessert wine or liqueur."
+          },
+          {
+            "id": "4",
+            "name": "Lamb",
+            "imageSrc": "https://www.themealdb.com/images/category/lamb.png",
+            "description": "Lamb, hogget, and mutton are the meat of domestic sheep (species Ovis aries) at different ages."
+          },
+          {
+            "id": "5",
+            "name": "Miscellaneous",
+            "imageSrc": "https://www.themealdb.com/images/category/miscellaneous.png",
+            "description": "General foods that do not fit into another category"
+          },
+          {
+            "id": "6",
+            "name": "Pasta",
+            "imageSrc": "https://www.themealdb.com/images/category/pasta.png",
+            "description": "Pasta is a staple food of traditional Italian cuisine, with the first reference dating to 1154 in Sicily."
+          },
+          {
+            "id": "7",
+            "name": "Seafood",
+            "imageSrc": "https://www.themealdb.com/images/category/seafood.png",
+            "description": "Seafood is any form of sea life regarded as food by humans. Seafood prominently includes fish and shellfish. Shellfish include various species of molluscs, crustaceans, and echinoderms. Historically, sea mammals such as whales and dolphins have been consumed as food, though that happens to a lesser extent in modern times. Edible sea plants, such as some seaweeds and microalgae, are widely eaten as seafood around the world, especially in Asia (see the category of sea vegetables). In North America, although not generally in the United Kingdom, the term \"seafood\" is extended to fresh water organisms eaten by humans, so all edible aquatic life may be referred to as seafood. For the sake of completeness, this article includes all edible aquatic life."
+          }
+        ]
+      '
+    ></recipehub-category-grid> -->
+    
+    <!-- Cuisines Page can be created in SvelteKit and it can reuse the cuisine-chip card 
+        to show the cuisines. So, we do not need to create cuisine-grid component. -->
+
+    <!-- <recipehub-recipe-details
+      recipe='
+        {
+          "id": "52772",
+          "name": "Teriyaki Chicken Casserole",
+          "category": "Chicken",
+          "area": "Japanese",
+          "image": "https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg",
+          "youtubeUrl": "https://www.youtube.com/watch?v=4MpYuaJsvRw",
+          "instructions": "Preheat oven to 350\u00b0 F. Spray a 9x13-inch baking pan with non-stick spray.\r\nCombine soy sauce, \u00bd cup water, brown sugar, ginger and garlic in a small saucepan and cover. Bring to a boil over medium heat. Remove lid and cook for one minute once boiling.\r\nMeanwhile, stir together the corn starch and 2 tablespoons of water in a separate dish until smooth. Once sauce is boiling, add mixture to the saucepan and stir to combine. Cook until the sauce starts to thicken then remove from heat.\r\nPlace the chicken breasts in the prepared pan. Pour one cup of the sauce over top of chicken. Place chicken in oven and bake 35 minutes or until cooked through. Remove from oven and shred chicken in the dish using two forks.\r\n*Meanwhile, steam or cook the vegetables according to package directions.\r\nAdd the cooked vegetables and rice to the casserole dish with the chicken. Add most of the remaining sauce, reserving a bit to drizzle over the top when serving. Gently toss everything together in the casserole dish until combined. Return to oven and cook 15 minutes. Remove from oven and let stand 5 minutes before serving. Drizzle each serving with remaining sauce. Enjoy!",
+          "ingredients": [
+            {
+              "name": "soy sauce",
+              "measure": "3/4 cup"
+            },
+            {
+              "name": "water",
+              "measure": "1/2 cup"
+            },
+            {
+              "name": "brown sugar",
+              "measure": "1/4 cup"
+            },
+            {
+              "name": "ground ginger",
+              "measure": "1/2 teaspoon"
+            },
+            {
+              "name": "minced garlic",
+              "measure": "1/2 teaspoon"
+            },
+            {
+              "name": "corn starch",
+              "measure": "1 Tablespoons"
+            },
+            {
+              "name": "chicken breasts",
+              "measure": "1 (12 oz.)"
+            },
+            {
+              "name": "stir-fry vegetables",
+              "measure": "2"
+            },
+            {
+              "name": "brown rice",
+              "measure": "3 cups"
+            }
+          ]
+        }
+      '
+      show-favorite="true"
+      show-add-to-meal-plan="true"
+    ></recipehub-recipe-details> -->
+
+    <!-- Recipe Card demo -->
+    <!-- <recipehub-recipe-card
+      recipe='{
+        "id": "52772",
+        "name": "Teriyaki Chicken Casserole",
+        "image": "https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg",
+        "category": "Chicken",
+        "area": "Japanese",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis knostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis knostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis knostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      }'
+      show-favorite="true"
+      is-favorite="false"
+      placeholder-image-src="/assets/generic-recipe.svg"
+    ></recipehub-recipe-card> -->
+
+    <!-- Recipe Card demo for My Recipes -->
+    <!-- <recipehub-recipe-card
+      recipe='{
+        "id": "my-001",
+        "name": "My Special Chicken Curry",
+        "image": "/assets/my-chicken-curry.jpg",
+        "category": "Chicken",
+        "area": "Indian",
+        "description": "My own family recipe. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis knostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      }'
+      show-edit="true"
+      show-delete="true"
+      placeholder-image-src="/assets/generic-recipe.svg"
+    ></recipehub-recipe-card> -->
+
+    <!-- Create New Recipe Form -->
+    <!-- <recipehub-recipe-form
+      mode="create"
+    ></recipehub-recipe-form> -->
+
+    <!-- Recipe Form in Edit mode -->
+    <!-- <recipehub-recipe-form
+      mode="edit"
+      recipe='{
+        "id": "my-001",
+        "name": "My Special Chicken Curry",
+        "category": "Chicken",
+        "area": "Indian",
+        "description": "A family recipe.",
+        "image": "",
+        "ingredients": [
+          {
+            "name": "Chicken",
+            "measure": "500g"
+          },
+          {
+            "name": "Onion",
+            "measure": "1 large"
+          },
+          {
+            "name": "Tomato",
+            "measure": "2"
+          }
+        ],
+        "instructions": "1. Prepare the ingredients.\n2. Cook the chicken.\n3. Add the spices and simmer.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=4MpYuaJsvRw"
+      }'
+    ></recipehub-recipe-form> -->
+
+
+    <!-- <recipehub-footer
+      brand-title="RecipeHub"
+      logo-src="/assets/recipehub-logo.svg"
+      description="Discover delicious recipes and plan your meals with ease."
+      navigation-items='[
+        {"id":"0","label":"Discover","value":"discover","href":"/discover"},
+        {"id":"1","label":"Favorites","value":"favorites","href":"/favorites"},
+        {"id":"2","label":"Meal Planner","value":"meal-planner","href":"/meal-planner"},
+        {"id":"3","label":"My Recipes","value":"my-recipes","href":"/my-recipes"}
+      ]'
+      show-privacy-link="true"
+      privacy-href="/privacy"
+    ></recipehub-footer> -->
+    <!-- <my-component first="Stencil" middle="'Don't call me a framework'" last="JS"></my-component> -->
   </body>
 </html>

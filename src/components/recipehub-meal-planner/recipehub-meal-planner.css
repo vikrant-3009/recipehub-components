@@ -1,0 +1,124 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.meal-planner {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.planner-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.week-label {
+  margin: 0;
+  color: #1e293b;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.week-navigation-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid #dbe3ec;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #475569;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.week-navigation-button:hover {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+  color: #1e293b;
+}
+
+.week-navigation-button:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.navigation-icon {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.planner-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(180px, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 14px;
+  text-align: center;
+}
+
+@media (max-width: 1400px) {
+  .planner-grid {
+    grid-template-columns: repeat(4, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .planner-grid {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scroll-snap-type: x proximity;
+  }
+
+  .planner-grid recipehub-meal-plan-day {
+    flex: 0 0 220px;
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 500px) {
+  .planner-header {
+    gap: 10px;
+  }
+
+  .week-label {
+    font-size: 18px;
+  }
+
+  .week-navigation-button {
+    width: 32px;
+    height: 32px;
+  }
+
+  .planner-grid recipehub-meal-plan-day {
+    flex-basis: 210px;
+  }
+}

@@ -1,7 +1,7 @@
 {
-  "name": "recipe-ui-components",
-  "version": "0.0.1",
-  "description": "Stencil Component Starter",
+  "name": "@vikrantkatoch/recipehub-ui-components",
+  "version": "1.0.0",
+  "description": "A reusable web component library for Recipe and Meal Planner Project named RecipeHub.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
   "types": "dist/types/index.d.ts",
@@ -13,9 +13,9 @@
       "import": "./dist/recipe-ui-components/recipe-ui-components.esm.js",
       "require": "./dist/recipe-ui-components/recipe-ui-components.cjs.js"
     },
-    "./my-component": {
-      "import": "./dist/components/my-component.js",
-      "types": "./dist/components/my-component.d.ts"
+    "./components/*": {
+      "import": "./dist/custom-elements/*.js",
+      "types": "./dist/custom-elements/*.d.ts"
     },
     "./loader": {
       "import": "./loader/index.js",

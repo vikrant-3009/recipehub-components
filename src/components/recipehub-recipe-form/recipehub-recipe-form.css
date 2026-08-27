@@ -1,0 +1,305 @@
+:host {
+  display: block;
+  width: 100%;
+  font-family: var(--font-family-primary, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif);
+  background-color: var(--color-primary-white, #ffffff);
+}
+
+.recipe-form-section {
+  width: 100%;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px 64px;
+  box-sizing: border-box;
+}
+
+.form-header {
+  margin-bottom: 32px;
+}
+
+.form-title {
+  margin: 0;
+  color: var(--recipehub-hero-input-color, #111827);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.6px;
+}
+
+.form-subtitle {
+  margin: 8px 0 0;
+  color: var(--color-text-grey-secondary, #718096);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.recipe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.form-section {
+  padding: 24px;
+  border: 1px solid var(--recipehub-border-primary, #e2e8f0);
+  border-radius: 16px;
+  background-color: var(--color-primary-white, #ffffff);
+}
+
+.section-title {
+  margin: 0;
+  margin-bottom: 8px;
+  color: var(--recipehub-hero-input-color, #111827);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.section-description {
+  margin: 6px 0 0;
+  color: var(--color-text-grey-secondary, #718096);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.required {
+  margin-left: 3px;
+  color: #d9466f;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-field label {
+  color: var(--color-text-grey-4, #374151);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  padding: 11px 13px;
+  border: 1px solid var(--recipehub-border-primary, #e2e8f0);
+  border-radius: 9px;
+  outline: none;
+  background-color: var(--color-primary-white, #ffffff);
+  color: var(--recipehub-hero-input-color, #111827);
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.4;
+  box-sizing: border-box;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form-field input {
+  height: 44px;
+}
+
+.form-field textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: var(--color-text-grey-5, #9aa9bd);
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  border-color: var(--color-primary-green, #10b981);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12);
+}
+
+.form-field input[aria-invalid='true'],
+.form-field textarea[aria-invalid='true'] {
+  border-color: #e88aa6;
+}
+
+.error-message {
+  color: #d6336c;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.section-heading-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.add-button {
+  flex-shrink: 0;
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid var(--color-primary-green, #10b981);
+  border-radius: 8px;
+  background-color: #ecfdf5;
+  color: var(--color-secondary-green, #0da271);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: #d1fae5;
+}
+
+.ingredients-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ingredient-row {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr)
+    40px;
+  gap: 12px;
+  align-items: end;
+}
+
+.remove-button {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid #f3c4d3;
+  border-radius: 8px;
+  background-color: var(--color-primary-white, #ffffff);
+  color: #d9466f;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transform: translateY(-3px);
+}
+
+.remove-button:hover:not(:disabled) {
+  background-color: #fff1f5;
+  border-color: #e88aa6;
+}
+
+.remove-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 4px;
+}
+
+.cancel-button,
+.submit-button {
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 9px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cancel-button {
+  border: 1px solid #dfe6ed;
+  background-color: var(--color-primary-white, #ffffff);
+  color: #374151;
+}
+
+.cancel-button:hover {
+  background-color: #f8fafc;
+}
+
+.submit-button {
+  border: none;
+  background-color: var(--color-primary-green, #10b981);
+  color: var(--color-primary-white, #ffffff);
+}
+
+.submit-button:hover {
+  background-color: var(--color-secondary-green, #0da271);
+}
+
+.submit-button:focus-visible,
+.cancel-button:focus-visible,
+.add-button:focus-visible,
+.remove-button:focus-visible {
+  outline: 2px solid #10b981;
+  outline-offset: 2px;
+}
+
+@media (max-width: 700px) {
+  .form-container {
+    padding: 28px 16px 48px;
+  }
+
+  .form-title {
+    font-size: 28px;
+  }
+
+  .form-section {
+    padding: 20px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full-width {
+    grid-column: auto;
+  }
+
+  .section-heading-row {
+    flex-direction: column;
+  }
+
+  .add-button {
+    width: 100%;
+  }
+
+  .ingredient-row {
+    grid-template-columns: 1fr;
+  }
+
+  .remove-button {
+    width: 100%;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .cancel-button,
+  .submit-button {
+    width: 100%;
+  }
+}

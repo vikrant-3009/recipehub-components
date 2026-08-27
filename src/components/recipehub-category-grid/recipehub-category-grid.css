@@ -1,0 +1,30 @@
+:host {
+  display: block;
+  width: 100%;
+  font-family: var(--font-family-primary, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif);
+}
+
+.category-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  box-sizing: border-box;
+  padding: 1rem 0;
+}
+
+.empty-state {
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed var(--recipehub-border-primary, #e2e8f0);
+  border-radius: 16px;
+  background-color: #fafcfd;
+}
+
+.empty-state p {
+  margin: 0;
+  color: var(--color-text-grey-secondary, #718096);
+  font-size: 15px;
+}

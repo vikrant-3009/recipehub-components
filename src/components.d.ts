@@ -5,64 +5,1165 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { RecipeCuisine } from "./models/recipe-cuisine";
+import { DayName, MealPlanItem, RemoveMealEvent } from "./models/recipe-meal-plan-model";
+import { RecipeFormData } from "./models/recipe-form-model";
+import { DayName as DayName1 } from "./components";
+import { RecipeCardData } from "./models/recipe-card-model";
+export { RecipeCuisine } from "./models/recipe-cuisine";
+export { DayName, MealPlanItem, RemoveMealEvent } from "./models/recipe-meal-plan-model";
+export { RecipeFormData } from "./models/recipe-form-model";
+export { DayName as DayName1 } from "./components";
+export { RecipeCardData } from "./models/recipe-card-model";
 export namespace Components {
-    interface MyComponent {
+    interface RecipehubCategoryCard {
         /**
-          * The first name
+          * @default ''
          */
-        "first": string;
+        "categoryId": string;
         /**
-          * The last name
+          * @default ''
          */
-        "last": string;
+        "description": string;
         /**
-          * The middle name
+          * @default ''
          */
-        "middle": string;
+        "imageSrc": string;
+        /**
+          * @default ''
+         */
+        "name": string;
+    }
+    interface RecipehubCategoryChip {
+        /**
+          * @default ''
+         */
+        "categoryId": string;
+        /**
+          * @default ''
+         */
+        "name": string;
+    }
+    interface RecipehubCategoryGrid {
+        /**
+          * @default ''
+         */
+        "categories": string;
+    }
+    interface RecipehubCategorySection {
+        /**
+          * @default ''
+         */
+        "categories": string;
+        /**
+          * @default 'Explore Categories'
+         */
+        "categoryTitle": string;
+        /**
+          * @default true
+         */
+        "showViewMore": boolean;
+        /**
+          * @default 6
+         */
+        "visibleCount": number;
+    }
+    interface RecipehubCuisineChip {
+        /**
+          * @default {     id: '',     name: '',     area: '',     country: ''   }
+         */
+        "cuisineData": RecipeCuisine;
+    }
+    interface RecipehubCuisineSection {
+        /**
+          * @default 'Explore Cuisines'
+         */
+        "cuisineTitle": string;
+        /**
+          * @default ''
+         */
+        "cuisines": string;
+        /**
+          * @default true
+         */
+        "showViewMore": boolean;
+        /**
+          * @default 6
+         */
+        "visibleCount": number;
+    }
+    interface RecipehubFooter {
+        /**
+          * @default 'RecipeHub'
+         */
+        "brandTitle": string;
+        /**
+          * @default ''
+         */
+        "copyrightText": string;
+        /**
+          * @default 'Discover delicious recipes and plan your meals with ease.'
+         */
+        "description": string;
+        /**
+          * @default ''
+         */
+        "logoSrc": string;
+        /**
+          * @default ''
+         */
+        "navigationItems": string;
+        /**
+          * @default '/privacy'
+         */
+        "privacyHref": string;
+        /**
+          * @default 'Privacy Policy'
+         */
+        "privacyLabel": string;
+        /**
+          * @default true
+         */
+        "showPrivacyLink": boolean;
+        /**
+          * @default false
+         */
+        "showTermsLink": boolean;
+        /**
+          * @default '/terms'
+         */
+        "termsHref": string;
+        /**
+          * @default 'Terms of Service'
+         */
+        "termsLabel": string;
+    }
+    interface RecipehubHeader {
+        /**
+          * @default 'discover'
+         */
+        "activePage": string;
+        /**
+          * @default 'RecipeHub'
+         */
+        "brandTitle": string;
+        /**
+          * @default ''
+         */
+        "genericUserSrc": string;
+        /**
+          * @default ''
+         */
+        "logoSrc": string;
+        /**
+          * @default ''
+         */
+        "navigationItems": string;
+        /**
+          * @default true
+         */
+        "showMobileMenu": boolean;
+        /**
+          * @default true
+         */
+        "showNotifications": boolean;
+        /**
+          * @default true
+         */
+        "showProfile": boolean;
+    }
+    interface RecipehubHero {
+        /**
+          * @default 'Search'
+         */
+        "buttonLabel": string;
+        /**
+          * @default 'Demo Title'
+         */
+        "heroTitle": string;
+        /**
+          * @default ''
+         */
+        "initialValue": string;
+        /**
+          * @default 'Search placeholder...'
+         */
+        "placeholder": string;
+    }
+    interface RecipehubMealPlanDay {
+        /**
+          * @default ''
+         */
+        "date": string;
+        /**
+          * @default 'Sunday'
+         */
+        "dayName": DayName;
+        /**
+          * @default '[]'
+         */
+        "meals": string;
+        /**
+          * @default ''
+         */
+        "placeholderImageSrc": string;
+    }
+    interface RecipehubMealPlanner {
+        /**
+          * @default '[]'
+         */
+        "days": string;
+        /**
+          * @default ''
+         */
+        "placeholderImageSrc": string;
+        /**
+          * @default ''
+         */
+        "weekLabel": string;
+    }
+    interface RecipehubPlannedRecipe {
+        /**
+          * @default ''
+         */
+        "placeholderImageSrc": string;
+        /**
+          * @default ''
+         */
+        "recipe": string;
+    }
+    interface RecipehubRecipeCard {
+        /**
+          * @default false
+         */
+        "isFavorite": boolean;
+        /**
+          * @default ''
+         */
+        "placeholderImageSrc": string;
+        /**
+          * @default ''
+         */
+        "recipe": string;
+        /**
+          * @default false
+         */
+        "showDelete": boolean;
+        /**
+          * @default false
+         */
+        "showEdit": boolean;
+        /**
+          * @default false
+         */
+        "showFavorite": boolean;
+    }
+    interface RecipehubRecipeDetails {
+        /**
+          * @default false
+         */
+        "isFavorite": boolean;
+        /**
+          * @default ''
+         */
+        "recipe": string;
+        /**
+          * @default true
+         */
+        "showAddToMealPlan": boolean;
+        /**
+          * @default true
+         */
+        "showFavorite": boolean;
+    }
+    interface RecipehubRecipeForm {
+        /**
+          * @default 'create'
+         */
+        "mode": 'create' | 'edit';
+        /**
+          * @default ''
+         */
+        "recipe": string;
+    }
+    interface RecipehubRecipePicker {
+        /**
+          * @default 'Sunday'
+         */
+        "dayName": DayName1;
+        /**
+          * @default false
+         */
+        "isLoading": boolean;
+        /**
+          * @default false
+         */
+        "open": boolean;
+        /**
+          * @default ''
+         */
+        "placeholderImageSrc": string;
+        /**
+          * @default '[]'
+         */
+        "recipes": string;
+        /**
+          * @default ''
+         */
+        "searchValue": string;
     }
 }
+export interface RecipehubCategoryCardCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLRecipehubCategoryCardElement;
+}
+export interface RecipehubCategoryChipCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLRecipehubCategoryChipElement;
+}
+export interface RecipehubCategoryGridCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLRecipehubCategoryGridElement;
+}
+export interface RecipehubCategorySectionCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLRecipehubCategorySectionElement;
+}
+export interface RecipehubCuisineChipCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLRecipehubCuisineChipElement;
+}
+export interface RecipehubCuisineSectionCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLRecipehubCuisineSectionElement;
+}
+export interface RecipehubFooterCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLRecipehubFooterElement;
+}
+export interface RecipehubHeaderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLRecipehubHeaderElement;
+}
+export interface RecipehubHeroCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLRecipehubHeroElement;
+}
+export interface RecipehubMealPlanDayCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLRecipehubMealPlanDayElement;
+}
+export interface RecipehubMealPlannerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLRecipehubMealPlannerElement;
+}
+export interface RecipehubPlannedRecipeCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLRecipehubPlannedRecipeElement;
+}
+export interface RecipehubRecipeCardCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLRecipehubRecipeCardElement;
+}
+export interface RecipehubRecipeDetailsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLRecipehubRecipeDetailsElement;
+}
+export interface RecipehubRecipeFormCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLRecipehubRecipeFormElement;
+}
+export interface RecipehubRecipePickerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLRecipehubRecipePickerElement;
+}
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLRecipehubCategoryCardElementEventMap {
+        "categorySelect": string;
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    interface HTMLRecipehubCategoryCardElement extends Components.RecipehubCategoryCard, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLRecipehubCategoryCardElementEventMap>(type: K, listener: (this: HTMLRecipehubCategoryCardElement, ev: RecipehubCategoryCardCustomEvent<HTMLRecipehubCategoryCardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLRecipehubCategoryCardElementEventMap>(type: K, listener: (this: HTMLRecipehubCategoryCardElement, ev: RecipehubCategoryCardCustomEvent<HTMLRecipehubCategoryCardElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLRecipehubCategoryCardElement: {
+        prototype: HTMLRecipehubCategoryCardElement;
+        new (): HTMLRecipehubCategoryCardElement;
+    };
+    interface HTMLRecipehubCategoryChipElementEventMap {
+        "categorySelect": string;
+    }
+    interface HTMLRecipehubCategoryChipElement extends Components.RecipehubCategoryChip, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLRecipehubCategoryChipElementEventMap>(type: K, listener: (this: HTMLRecipehubCategoryChipElement, ev: RecipehubCategoryChipCustomEvent<HTMLRecipehubCategoryChipElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLRecipehubCategoryChipElementEventMap>(type: K, listener: (this: HTMLRecipehubCategoryChipElement, ev: RecipehubCategoryChipCustomEvent<HTMLRecipehubCategoryChipElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLRecipehubCategoryChipElement: {
+        prototype: HTMLRecipehubCategoryChipElement;
+        new (): HTMLRecipehubCategoryChipElement;
+    };
+    interface HTMLRecipehubCategoryGridElementEventMap {
+        "categorySelect": string;
+    }
+    interface HTMLRecipehubCategoryGridElement extends Components.RecipehubCategoryGrid, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLRecipehubCategoryGridElementEventMap>(type: K, listener: (this: HTMLRecipehubCategoryGridElement, ev: RecipehubCategoryGridCustomEvent<HTMLRecipehubCategoryGridElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLRecipehubCategoryGridElementEventMap>(type: K, listener: (this: HTMLRecipehubCategoryGridElement, ev: RecipehubCategoryGridCustomEvent<HTMLRecipehubCategoryGridElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLRecipehubCategoryGridElement: {
+        prototype: HTMLRecipehubCategoryGridElement;
+        new (): HTMLRecipehubCategoryGridElement;
+    };
+    interface HTMLRecipehubCategorySectionElementEventMap {
+        "categorySelect": string;
+        "viewMore": void;
+    }
+    interface HTMLRecipehubCategorySectionElement extends Components.RecipehubCategorySection, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLRecipehubCategorySectionElementEventMap>(type: K, listener: (this: HTMLRecipehubCategorySectionElement, ev: RecipehubCategorySectionCustomEvent<HTMLRecipehubCategorySectionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLRecipehubCategorySectionElementEventMap>(type: K, listener: (this: HTMLRecipehubCategorySectionElement, ev: RecipehubCategorySectionCustomEvent<HTMLRecipehubCategorySectionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLRecipehubCategorySectionElement: {
+        prototype: HTMLRecipehubCategorySectionElement;
+        new (): HTMLRecipehubCategorySectionElement;
+    };
+    interface HTMLRecipehubCuisineChipElementEventMap {
+        "cuisineSelect": RecipeCuisine;
+    }
+    interface HTMLRecipehubCuisineChipElement extends Components.RecipehubCuisineChip, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLRecipehubCuisineChipElementEventMap>(type: K, listener: (this: HTMLRecipehubCuisineChipElement, ev: RecipehubCuisineChipCustomEvent<HTMLRecipehubCuisineChipElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLRecipehubCuisineChipElementEventMap>(type: K, listener: (this: HTMLRecipehubCuisineChipElement, ev: RecipehubCuisineChipCustomEvent<HTMLRecipehubCuisineChipElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLRecipehubCuisineChipElement: {
+        prototype: HTMLRecipehubCuisineChipElement;
+        new (): HTMLRecipehubCuisineChipElement;
+    };
+    interface HTMLRecipehubCuisineSectionElementEventMap {
+        "cuisineSelect": RecipeCuisine;
+        "viewMore": void;
+    }
+    interface HTMLRecipehubCuisineSectionElement extends Components.RecipehubCuisineSection, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLRecipehubCuisineSectionElementEventMap>(type: K, listener: (this: HTMLRecipehubCuisineSectionElement, ev: RecipehubCuisineSectionCustomEvent<HTMLRecipehubCuisineSectionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLRecipehubCuisineSectionElementEventMap>(type: K, listener: (this: HTMLRecipehubCuisineSectionElement, ev: RecipehubCuisineSectionCustomEvent<HTMLRecipehubCuisineSectionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLRecipehubCuisineSectionElement: {
+        prototype: HTMLRecipehubCuisineSectionElement;
+        new (): HTMLRecipehubCuisineSectionElement;
+    };
+    interface HTMLRecipehubFooterElementEventMap {
+        "navigationChange": string;
+        "privacyClick": void;
+        "termsClick": void;
+    }
+    interface HTMLRecipehubFooterElement extends Components.RecipehubFooter, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLRecipehubFooterElementEventMap>(type: K, listener: (this: HTMLRecipehubFooterElement, ev: RecipehubFooterCustomEvent<HTMLRecipehubFooterElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLRecipehubFooterElementEventMap>(type: K, listener: (this: HTMLRecipehubFooterElement, ev: RecipehubFooterCustomEvent<HTMLRecipehubFooterElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLRecipehubFooterElement: {
+        prototype: HTMLRecipehubFooterElement;
+        new (): HTMLRecipehubFooterElement;
+    };
+    interface HTMLRecipehubHeaderElementEventMap {
+        "navigationChange": string;
+        "notificationIconClick": void;
+        "profileIconClick": void;
+    }
+    interface HTMLRecipehubHeaderElement extends Components.RecipehubHeader, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLRecipehubHeaderElementEventMap>(type: K, listener: (this: HTMLRecipehubHeaderElement, ev: RecipehubHeaderCustomEvent<HTMLRecipehubHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLRecipehubHeaderElementEventMap>(type: K, listener: (this: HTMLRecipehubHeaderElement, ev: RecipehubHeaderCustomEvent<HTMLRecipehubHeaderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLRecipehubHeaderElement: {
+        prototype: HTMLRecipehubHeaderElement;
+        new (): HTMLRecipehubHeaderElement;
+    };
+    interface HTMLRecipehubHeroElementEventMap {
+        "searchSubmit": string;
+        "searchClear": void;
+    }
+    interface HTMLRecipehubHeroElement extends Components.RecipehubHero, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLRecipehubHeroElementEventMap>(type: K, listener: (this: HTMLRecipehubHeroElement, ev: RecipehubHeroCustomEvent<HTMLRecipehubHeroElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLRecipehubHeroElementEventMap>(type: K, listener: (this: HTMLRecipehubHeroElement, ev: RecipehubHeroCustomEvent<HTMLRecipehubHeroElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLRecipehubHeroElement: {
+        prototype: HTMLRecipehubHeroElement;
+        new (): HTMLRecipehubHeroElement;
+    };
+    interface HTMLRecipehubMealPlanDayElementEventMap {
+        "addRecipe": string;
+        "recipeSelect": MealPlanItem;
+        "removeRecipe": RemoveMealEvent;
+    }
+    interface HTMLRecipehubMealPlanDayElement extends Components.RecipehubMealPlanDay, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLRecipehubMealPlanDayElementEventMap>(type: K, listener: (this: HTMLRecipehubMealPlanDayElement, ev: RecipehubMealPlanDayCustomEvent<HTMLRecipehubMealPlanDayElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLRecipehubMealPlanDayElementEventMap>(type: K, listener: (this: HTMLRecipehubMealPlanDayElement, ev: RecipehubMealPlanDayCustomEvent<HTMLRecipehubMealPlanDayElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLRecipehubMealPlanDayElement: {
+        prototype: HTMLRecipehubMealPlanDayElement;
+        new (): HTMLRecipehubMealPlanDayElement;
+    };
+    interface HTMLRecipehubMealPlannerElementEventMap {
+        "previousWeek": void;
+        "nextWeek": void;
+        "addRecipe": string;
+        "recipeSelect": MealPlanItem;
+        "removeRecipe": RemoveMealEvent;
+    }
+    interface HTMLRecipehubMealPlannerElement extends Components.RecipehubMealPlanner, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLRecipehubMealPlannerElementEventMap>(type: K, listener: (this: HTMLRecipehubMealPlannerElement, ev: RecipehubMealPlannerCustomEvent<HTMLRecipehubMealPlannerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLRecipehubMealPlannerElementEventMap>(type: K, listener: (this: HTMLRecipehubMealPlannerElement, ev: RecipehubMealPlannerCustomEvent<HTMLRecipehubMealPlannerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLRecipehubMealPlannerElement: {
+        prototype: HTMLRecipehubMealPlannerElement;
+        new (): HTMLRecipehubMealPlannerElement;
+    };
+    interface HTMLRecipehubPlannedRecipeElementEventMap {
+        "recipeSelect": MealPlanItem;
+        "removeRecipe": string;
+    }
+    interface HTMLRecipehubPlannedRecipeElement extends Components.RecipehubPlannedRecipe, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLRecipehubPlannedRecipeElementEventMap>(type: K, listener: (this: HTMLRecipehubPlannedRecipeElement, ev: RecipehubPlannedRecipeCustomEvent<HTMLRecipehubPlannedRecipeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLRecipehubPlannedRecipeElementEventMap>(type: K, listener: (this: HTMLRecipehubPlannedRecipeElement, ev: RecipehubPlannedRecipeCustomEvent<HTMLRecipehubPlannedRecipeElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLRecipehubPlannedRecipeElement: {
+        prototype: HTMLRecipehubPlannedRecipeElement;
+        new (): HTMLRecipehubPlannedRecipeElement;
+    };
+    interface HTMLRecipehubRecipeCardElementEventMap {
+        "recipeSelect": string;
+        "favoriteClick": string;
+        "editClick": string;
+        "deleteClick": string;
+    }
+    interface HTMLRecipehubRecipeCardElement extends Components.RecipehubRecipeCard, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLRecipehubRecipeCardElementEventMap>(type: K, listener: (this: HTMLRecipehubRecipeCardElement, ev: RecipehubRecipeCardCustomEvent<HTMLRecipehubRecipeCardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLRecipehubRecipeCardElementEventMap>(type: K, listener: (this: HTMLRecipehubRecipeCardElement, ev: RecipehubRecipeCardCustomEvent<HTMLRecipehubRecipeCardElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLRecipehubRecipeCardElement: {
+        prototype: HTMLRecipehubRecipeCardElement;
+        new (): HTMLRecipehubRecipeCardElement;
+    };
+    interface HTMLRecipehubRecipeDetailsElementEventMap {
+        "favoriteClick": string;
+        "addToMealPlan": string;
+        "categoryClick": string;
+        "cuisineClick": string;
+    }
+    interface HTMLRecipehubRecipeDetailsElement extends Components.RecipehubRecipeDetails, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLRecipehubRecipeDetailsElementEventMap>(type: K, listener: (this: HTMLRecipehubRecipeDetailsElement, ev: RecipehubRecipeDetailsCustomEvent<HTMLRecipehubRecipeDetailsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLRecipehubRecipeDetailsElementEventMap>(type: K, listener: (this: HTMLRecipehubRecipeDetailsElement, ev: RecipehubRecipeDetailsCustomEvent<HTMLRecipehubRecipeDetailsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLRecipehubRecipeDetailsElement: {
+        prototype: HTMLRecipehubRecipeDetailsElement;
+        new (): HTMLRecipehubRecipeDetailsElement;
+    };
+    interface HTMLRecipehubRecipeFormElementEventMap {
+        "recipeSubmit": RecipeFormData;
+        "cancel": void;
+    }
+    interface HTMLRecipehubRecipeFormElement extends Components.RecipehubRecipeForm, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLRecipehubRecipeFormElementEventMap>(type: K, listener: (this: HTMLRecipehubRecipeFormElement, ev: RecipehubRecipeFormCustomEvent<HTMLRecipehubRecipeFormElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLRecipehubRecipeFormElementEventMap>(type: K, listener: (this: HTMLRecipehubRecipeFormElement, ev: RecipehubRecipeFormCustomEvent<HTMLRecipehubRecipeFormElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLRecipehubRecipeFormElement: {
+        prototype: HTMLRecipehubRecipeFormElement;
+        new (): HTMLRecipehubRecipeFormElement;
+    };
+    interface HTMLRecipehubRecipePickerElementEventMap {
+        "search": string;
+        "recipeSelect": RecipeCardData;
+        "close": void;
+    }
+    interface HTMLRecipehubRecipePickerElement extends Components.RecipehubRecipePicker, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLRecipehubRecipePickerElementEventMap>(type: K, listener: (this: HTMLRecipehubRecipePickerElement, ev: RecipehubRecipePickerCustomEvent<HTMLRecipehubRecipePickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLRecipehubRecipePickerElementEventMap>(type: K, listener: (this: HTMLRecipehubRecipePickerElement, ev: RecipehubRecipePickerCustomEvent<HTMLRecipehubRecipePickerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLRecipehubRecipePickerElement: {
+        prototype: HTMLRecipehubRecipePickerElement;
+        new (): HTMLRecipehubRecipePickerElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "recipehub-category-card": HTMLRecipehubCategoryCardElement;
+        "recipehub-category-chip": HTMLRecipehubCategoryChipElement;
+        "recipehub-category-grid": HTMLRecipehubCategoryGridElement;
+        "recipehub-category-section": HTMLRecipehubCategorySectionElement;
+        "recipehub-cuisine-chip": HTMLRecipehubCuisineChipElement;
+        "recipehub-cuisine-section": HTMLRecipehubCuisineSectionElement;
+        "recipehub-footer": HTMLRecipehubFooterElement;
+        "recipehub-header": HTMLRecipehubHeaderElement;
+        "recipehub-hero": HTMLRecipehubHeroElement;
+        "recipehub-meal-plan-day": HTMLRecipehubMealPlanDayElement;
+        "recipehub-meal-planner": HTMLRecipehubMealPlannerElement;
+        "recipehub-planned-recipe": HTMLRecipehubPlannedRecipeElement;
+        "recipehub-recipe-card": HTMLRecipehubRecipeCardElement;
+        "recipehub-recipe-details": HTMLRecipehubRecipeDetailsElement;
+        "recipehub-recipe-form": HTMLRecipehubRecipeFormElement;
+        "recipehub-recipe-picker": HTMLRecipehubRecipePickerElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
+    interface RecipehubCategoryCard {
         /**
-          * The first name
+          * @default ''
          */
-        "first"?: string;
+        "categoryId"?: string;
         /**
-          * The last name
+          * @default ''
          */
-        "last"?: string;
+        "description"?: string;
         /**
-          * The middle name
+          * @default ''
          */
-        "middle"?: string;
+        "imageSrc"?: string;
+        /**
+          * @default ''
+         */
+        "name"?: string;
+        "onCategorySelect"?: (event: RecipehubCategoryCardCustomEvent<string>) => void;
+    }
+    interface RecipehubCategoryChip {
+        /**
+          * @default ''
+         */
+        "categoryId"?: string;
+        /**
+          * @default ''
+         */
+        "name"?: string;
+        "onCategorySelect"?: (event: RecipehubCategoryChipCustomEvent<string>) => void;
+    }
+    interface RecipehubCategoryGrid {
+        /**
+          * @default ''
+         */
+        "categories"?: string;
+        "onCategorySelect"?: (event: RecipehubCategoryGridCustomEvent<string>) => void;
+    }
+    interface RecipehubCategorySection {
+        /**
+          * @default ''
+         */
+        "categories"?: string;
+        /**
+          * @default 'Explore Categories'
+         */
+        "categoryTitle"?: string;
+        "onCategorySelect"?: (event: RecipehubCategorySectionCustomEvent<string>) => void;
+        "onViewMore"?: (event: RecipehubCategorySectionCustomEvent<void>) => void;
+        /**
+          * @default true
+         */
+        "showViewMore"?: boolean;
+        /**
+          * @default 6
+         */
+        "visibleCount"?: number;
+    }
+    interface RecipehubCuisineChip {
+        /**
+          * @default {     id: '',     name: '',     area: '',     country: ''   }
+         */
+        "cuisineData"?: RecipeCuisine;
+        "onCuisineSelect"?: (event: RecipehubCuisineChipCustomEvent<RecipeCuisine>) => void;
+    }
+    interface RecipehubCuisineSection {
+        /**
+          * @default 'Explore Cuisines'
+         */
+        "cuisineTitle"?: string;
+        /**
+          * @default ''
+         */
+        "cuisines"?: string;
+        "onCuisineSelect"?: (event: RecipehubCuisineSectionCustomEvent<RecipeCuisine>) => void;
+        "onViewMore"?: (event: RecipehubCuisineSectionCustomEvent<void>) => void;
+        /**
+          * @default true
+         */
+        "showViewMore"?: boolean;
+        /**
+          * @default 6
+         */
+        "visibleCount"?: number;
+    }
+    interface RecipehubFooter {
+        /**
+          * @default 'RecipeHub'
+         */
+        "brandTitle"?: string;
+        /**
+          * @default ''
+         */
+        "copyrightText"?: string;
+        /**
+          * @default 'Discover delicious recipes and plan your meals with ease.'
+         */
+        "description"?: string;
+        /**
+          * @default ''
+         */
+        "logoSrc"?: string;
+        /**
+          * @default ''
+         */
+        "navigationItems"?: string;
+        "onNavigationChange"?: (event: RecipehubFooterCustomEvent<string>) => void;
+        "onPrivacyClick"?: (event: RecipehubFooterCustomEvent<void>) => void;
+        "onTermsClick"?: (event: RecipehubFooterCustomEvent<void>) => void;
+        /**
+          * @default '/privacy'
+         */
+        "privacyHref"?: string;
+        /**
+          * @default 'Privacy Policy'
+         */
+        "privacyLabel"?: string;
+        /**
+          * @default true
+         */
+        "showPrivacyLink"?: boolean;
+        /**
+          * @default false
+         */
+        "showTermsLink"?: boolean;
+        /**
+          * @default '/terms'
+         */
+        "termsHref"?: string;
+        /**
+          * @default 'Terms of Service'
+         */
+        "termsLabel"?: string;
+    }
+    interface RecipehubHeader {
+        /**
+          * @default 'discover'
+         */
+        "activePage"?: string;
+        /**
+          * @default 'RecipeHub'
+         */
+        "brandTitle"?: string;
+        /**
+          * @default ''
+         */
+        "genericUserSrc"?: string;
+        /**
+          * @default ''
+         */
+        "logoSrc"?: string;
+        /**
+          * @default ''
+         */
+        "navigationItems"?: string;
+        "onNavigationChange"?: (event: RecipehubHeaderCustomEvent<string>) => void;
+        "onNotificationIconClick"?: (event: RecipehubHeaderCustomEvent<void>) => void;
+        "onProfileIconClick"?: (event: RecipehubHeaderCustomEvent<void>) => void;
+        /**
+          * @default true
+         */
+        "showMobileMenu"?: boolean;
+        /**
+          * @default true
+         */
+        "showNotifications"?: boolean;
+        /**
+          * @default true
+         */
+        "showProfile"?: boolean;
+    }
+    interface RecipehubHero {
+        /**
+          * @default 'Search'
+         */
+        "buttonLabel"?: string;
+        /**
+          * @default 'Demo Title'
+         */
+        "heroTitle"?: string;
+        /**
+          * @default ''
+         */
+        "initialValue"?: string;
+        "onSearchClear"?: (event: RecipehubHeroCustomEvent<void>) => void;
+        "onSearchSubmit"?: (event: RecipehubHeroCustomEvent<string>) => void;
+        /**
+          * @default 'Search placeholder...'
+         */
+        "placeholder"?: string;
+    }
+    interface RecipehubMealPlanDay {
+        /**
+          * @default ''
+         */
+        "date"?: string;
+        /**
+          * @default 'Sunday'
+         */
+        "dayName"?: DayName;
+        /**
+          * @default '[]'
+         */
+        "meals"?: string;
+        "onAddRecipe"?: (event: RecipehubMealPlanDayCustomEvent<string>) => void;
+        "onRecipeSelect"?: (event: RecipehubMealPlanDayCustomEvent<MealPlanItem>) => void;
+        "onRemoveRecipe"?: (event: RecipehubMealPlanDayCustomEvent<RemoveMealEvent>) => void;
+        /**
+          * @default ''
+         */
+        "placeholderImageSrc"?: string;
+    }
+    interface RecipehubMealPlanner {
+        /**
+          * @default '[]'
+         */
+        "days"?: string;
+        "onAddRecipe"?: (event: RecipehubMealPlannerCustomEvent<string>) => void;
+        "onNextWeek"?: (event: RecipehubMealPlannerCustomEvent<void>) => void;
+        "onPreviousWeek"?: (event: RecipehubMealPlannerCustomEvent<void>) => void;
+        "onRecipeSelect"?: (event: RecipehubMealPlannerCustomEvent<MealPlanItem>) => void;
+        "onRemoveRecipe"?: (event: RecipehubMealPlannerCustomEvent<RemoveMealEvent>) => void;
+        /**
+          * @default ''
+         */
+        "placeholderImageSrc"?: string;
+        /**
+          * @default ''
+         */
+        "weekLabel"?: string;
+    }
+    interface RecipehubPlannedRecipe {
+        "onRecipeSelect"?: (event: RecipehubPlannedRecipeCustomEvent<MealPlanItem>) => void;
+        "onRemoveRecipe"?: (event: RecipehubPlannedRecipeCustomEvent<string>) => void;
+        /**
+          * @default ''
+         */
+        "placeholderImageSrc"?: string;
+        /**
+          * @default ''
+         */
+        "recipe"?: string;
+    }
+    interface RecipehubRecipeCard {
+        /**
+          * @default false
+         */
+        "isFavorite"?: boolean;
+        "onDeleteClick"?: (event: RecipehubRecipeCardCustomEvent<string>) => void;
+        "onEditClick"?: (event: RecipehubRecipeCardCustomEvent<string>) => void;
+        "onFavoriteClick"?: (event: RecipehubRecipeCardCustomEvent<string>) => void;
+        "onRecipeSelect"?: (event: RecipehubRecipeCardCustomEvent<string>) => void;
+        /**
+          * @default ''
+         */
+        "placeholderImageSrc"?: string;
+        /**
+          * @default ''
+         */
+        "recipe"?: string;
+        /**
+          * @default false
+         */
+        "showDelete"?: boolean;
+        /**
+          * @default false
+         */
+        "showEdit"?: boolean;
+        /**
+          * @default false
+         */
+        "showFavorite"?: boolean;
+    }
+    interface RecipehubRecipeDetails {
+        /**
+          * @default false
+         */
+        "isFavorite"?: boolean;
+        "onAddToMealPlan"?: (event: RecipehubRecipeDetailsCustomEvent<string>) => void;
+        "onCategoryClick"?: (event: RecipehubRecipeDetailsCustomEvent<string>) => void;
+        "onCuisineClick"?: (event: RecipehubRecipeDetailsCustomEvent<string>) => void;
+        "onFavoriteClick"?: (event: RecipehubRecipeDetailsCustomEvent<string>) => void;
+        /**
+          * @default ''
+         */
+        "recipe"?: string;
+        /**
+          * @default true
+         */
+        "showAddToMealPlan"?: boolean;
+        /**
+          * @default true
+         */
+        "showFavorite"?: boolean;
+    }
+    interface RecipehubRecipeForm {
+        /**
+          * @default 'create'
+         */
+        "mode"?: 'create' | 'edit';
+        "onCancel"?: (event: RecipehubRecipeFormCustomEvent<void>) => void;
+        "onRecipeSubmit"?: (event: RecipehubRecipeFormCustomEvent<RecipeFormData>) => void;
+        /**
+          * @default ''
+         */
+        "recipe"?: string;
+    }
+    interface RecipehubRecipePicker {
+        /**
+          * @default 'Sunday'
+         */
+        "dayName"?: DayName1;
+        /**
+          * @default false
+         */
+        "isLoading"?: boolean;
+        "onClose"?: (event: RecipehubRecipePickerCustomEvent<void>) => void;
+        "onRecipeSelect"?: (event: RecipehubRecipePickerCustomEvent<RecipeCardData>) => void;
+        "onSearch"?: (event: RecipehubRecipePickerCustomEvent<string>) => void;
+        /**
+          * @default false
+         */
+        "open"?: boolean;
+        /**
+          * @default ''
+         */
+        "placeholderImageSrc"?: string;
+        /**
+          * @default '[]'
+         */
+        "recipes"?: string;
+        /**
+          * @default ''
+         */
+        "searchValue"?: string;
     }
 
-    interface MyComponentAttributes {
-        "first": string;
-        "middle": string;
-        "last": string;
+    interface RecipehubCategoryCardAttributes {
+        "categoryId": string;
+        "name": string;
+        "imageSrc": string;
+        "description": string;
+    }
+    interface RecipehubCategoryChipAttributes {
+        "categoryId": string;
+        "name": string;
+    }
+    interface RecipehubCategoryGridAttributes {
+        "categories": string;
+    }
+    interface RecipehubCategorySectionAttributes {
+        "categoryTitle": string;
+        "categories": string;
+        "visibleCount": number;
+        "showViewMore": boolean;
+    }
+    interface RecipehubCuisineSectionAttributes {
+        "cuisineTitle": string;
+        "cuisines": string;
+        "visibleCount": number;
+        "showViewMore": boolean;
+    }
+    interface RecipehubFooterAttributes {
+        "brandTitle": string;
+        "logoSrc": string;
+        "description": string;
+        "navigationItems": string;
+        "copyrightText": string;
+        "showPrivacyLink": boolean;
+        "privacyLabel": string;
+        "privacyHref": string;
+        "showTermsLink": boolean;
+        "termsLabel": string;
+        "termsHref": string;
+    }
+    interface RecipehubHeaderAttributes {
+        "brandTitle": string;
+        "logoSrc": string;
+        "genericUserSrc": string;
+        "activePage": string;
+        "navigationItems": string;
+        "showNotifications": boolean;
+        "showProfile": boolean;
+        "showMobileMenu": boolean;
+    }
+    interface RecipehubHeroAttributes {
+        "heroTitle": string;
+        "placeholder": string;
+        "buttonLabel": string;
+        "initialValue": string;
+    }
+    interface RecipehubMealPlanDayAttributes {
+        "date": string;
+        "dayName": DayName;
+        "meals": string;
+        "placeholderImageSrc": string;
+    }
+    interface RecipehubMealPlannerAttributes {
+        "weekLabel": string;
+        "days": string;
+        "placeholderImageSrc": string;
+    }
+    interface RecipehubPlannedRecipeAttributes {
+        "recipe": string;
+        "placeholderImageSrc": string;
+    }
+    interface RecipehubRecipeCardAttributes {
+        "recipe": string;
+        "placeholderImageSrc": string;
+        "showFavorite": boolean;
+        "isFavorite": boolean;
+        "showEdit": boolean;
+        "showDelete": boolean;
+    }
+    interface RecipehubRecipeDetailsAttributes {
+        "recipe": string;
+        "showFavorite": boolean;
+        "isFavorite": boolean;
+        "showAddToMealPlan": boolean;
+    }
+    interface RecipehubRecipeFormAttributes {
+        "mode": 'create' | 'edit';
+        "recipe": string;
+    }
+    interface RecipehubRecipePickerAttributes {
+        "open": boolean;
+        "dayName": DayName;
+        "recipes": string;
+        "isLoading": boolean;
+        "searchValue": string;
+        "placeholderImageSrc": string;
     }
 
     interface IntrinsicElements {
-        "my-component": Omit<MyComponent, keyof MyComponentAttributes> & { [K in keyof MyComponent & keyof MyComponentAttributes]?: MyComponent[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `attr:${K}`]?: MyComponentAttributes[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `prop:${K}`]?: MyComponent[K] };
+        "recipehub-category-card": Omit<RecipehubCategoryCard, keyof RecipehubCategoryCardAttributes> & { [K in keyof RecipehubCategoryCard & keyof RecipehubCategoryCardAttributes]?: RecipehubCategoryCard[K] } & { [K in keyof RecipehubCategoryCard & keyof RecipehubCategoryCardAttributes as `attr:${K}`]?: RecipehubCategoryCardAttributes[K] } & { [K in keyof RecipehubCategoryCard & keyof RecipehubCategoryCardAttributes as `prop:${K}`]?: RecipehubCategoryCard[K] };
+        "recipehub-category-chip": Omit<RecipehubCategoryChip, keyof RecipehubCategoryChipAttributes> & { [K in keyof RecipehubCategoryChip & keyof RecipehubCategoryChipAttributes]?: RecipehubCategoryChip[K] } & { [K in keyof RecipehubCategoryChip & keyof RecipehubCategoryChipAttributes as `attr:${K}`]?: RecipehubCategoryChipAttributes[K] } & { [K in keyof RecipehubCategoryChip & keyof RecipehubCategoryChipAttributes as `prop:${K}`]?: RecipehubCategoryChip[K] };
+        "recipehub-category-grid": Omit<RecipehubCategoryGrid, keyof RecipehubCategoryGridAttributes> & { [K in keyof RecipehubCategoryGrid & keyof RecipehubCategoryGridAttributes]?: RecipehubCategoryGrid[K] } & { [K in keyof RecipehubCategoryGrid & keyof RecipehubCategoryGridAttributes as `attr:${K}`]?: RecipehubCategoryGridAttributes[K] } & { [K in keyof RecipehubCategoryGrid & keyof RecipehubCategoryGridAttributes as `prop:${K}`]?: RecipehubCategoryGrid[K] };
+        "recipehub-category-section": Omit<RecipehubCategorySection, keyof RecipehubCategorySectionAttributes> & { [K in keyof RecipehubCategorySection & keyof RecipehubCategorySectionAttributes]?: RecipehubCategorySection[K] } & { [K in keyof RecipehubCategorySection & keyof RecipehubCategorySectionAttributes as `attr:${K}`]?: RecipehubCategorySectionAttributes[K] } & { [K in keyof RecipehubCategorySection & keyof RecipehubCategorySectionAttributes as `prop:${K}`]?: RecipehubCategorySection[K] };
+        "recipehub-cuisine-chip": RecipehubCuisineChip;
+        "recipehub-cuisine-section": Omit<RecipehubCuisineSection, keyof RecipehubCuisineSectionAttributes> & { [K in keyof RecipehubCuisineSection & keyof RecipehubCuisineSectionAttributes]?: RecipehubCuisineSection[K] } & { [K in keyof RecipehubCuisineSection & keyof RecipehubCuisineSectionAttributes as `attr:${K}`]?: RecipehubCuisineSectionAttributes[K] } & { [K in keyof RecipehubCuisineSection & keyof RecipehubCuisineSectionAttributes as `prop:${K}`]?: RecipehubCuisineSection[K] };
+        "recipehub-footer": Omit<RecipehubFooter, keyof RecipehubFooterAttributes> & { [K in keyof RecipehubFooter & keyof RecipehubFooterAttributes]?: RecipehubFooter[K] } & { [K in keyof RecipehubFooter & keyof RecipehubFooterAttributes as `attr:${K}`]?: RecipehubFooterAttributes[K] } & { [K in keyof RecipehubFooter & keyof RecipehubFooterAttributes as `prop:${K}`]?: RecipehubFooter[K] };
+        "recipehub-header": Omit<RecipehubHeader, keyof RecipehubHeaderAttributes> & { [K in keyof RecipehubHeader & keyof RecipehubHeaderAttributes]?: RecipehubHeader[K] } & { [K in keyof RecipehubHeader & keyof RecipehubHeaderAttributes as `attr:${K}`]?: RecipehubHeaderAttributes[K] } & { [K in keyof RecipehubHeader & keyof RecipehubHeaderAttributes as `prop:${K}`]?: RecipehubHeader[K] };
+        "recipehub-hero": Omit<RecipehubHero, keyof RecipehubHeroAttributes> & { [K in keyof RecipehubHero & keyof RecipehubHeroAttributes]?: RecipehubHero[K] } & { [K in keyof RecipehubHero & keyof RecipehubHeroAttributes as `attr:${K}`]?: RecipehubHeroAttributes[K] } & { [K in keyof RecipehubHero & keyof RecipehubHeroAttributes as `prop:${K}`]?: RecipehubHero[K] };
+        "recipehub-meal-plan-day": Omit<RecipehubMealPlanDay, keyof RecipehubMealPlanDayAttributes> & { [K in keyof RecipehubMealPlanDay & keyof RecipehubMealPlanDayAttributes]?: RecipehubMealPlanDay[K] } & { [K in keyof RecipehubMealPlanDay & keyof RecipehubMealPlanDayAttributes as `attr:${K}`]?: RecipehubMealPlanDayAttributes[K] } & { [K in keyof RecipehubMealPlanDay & keyof RecipehubMealPlanDayAttributes as `prop:${K}`]?: RecipehubMealPlanDay[K] };
+        "recipehub-meal-planner": Omit<RecipehubMealPlanner, keyof RecipehubMealPlannerAttributes> & { [K in keyof RecipehubMealPlanner & keyof RecipehubMealPlannerAttributes]?: RecipehubMealPlanner[K] } & { [K in keyof RecipehubMealPlanner & keyof RecipehubMealPlannerAttributes as `attr:${K}`]?: RecipehubMealPlannerAttributes[K] } & { [K in keyof RecipehubMealPlanner & keyof RecipehubMealPlannerAttributes as `prop:${K}`]?: RecipehubMealPlanner[K] };
+        "recipehub-planned-recipe": Omit<RecipehubPlannedRecipe, keyof RecipehubPlannedRecipeAttributes> & { [K in keyof RecipehubPlannedRecipe & keyof RecipehubPlannedRecipeAttributes]?: RecipehubPlannedRecipe[K] } & { [K in keyof RecipehubPlannedRecipe & keyof RecipehubPlannedRecipeAttributes as `attr:${K}`]?: RecipehubPlannedRecipeAttributes[K] } & { [K in keyof RecipehubPlannedRecipe & keyof RecipehubPlannedRecipeAttributes as `prop:${K}`]?: RecipehubPlannedRecipe[K] };
+        "recipehub-recipe-card": Omit<RecipehubRecipeCard, keyof RecipehubRecipeCardAttributes> & { [K in keyof RecipehubRecipeCard & keyof RecipehubRecipeCardAttributes]?: RecipehubRecipeCard[K] } & { [K in keyof RecipehubRecipeCard & keyof RecipehubRecipeCardAttributes as `attr:${K}`]?: RecipehubRecipeCardAttributes[K] } & { [K in keyof RecipehubRecipeCard & keyof RecipehubRecipeCardAttributes as `prop:${K}`]?: RecipehubRecipeCard[K] };
+        "recipehub-recipe-details": Omit<RecipehubRecipeDetails, keyof RecipehubRecipeDetailsAttributes> & { [K in keyof RecipehubRecipeDetails & keyof RecipehubRecipeDetailsAttributes]?: RecipehubRecipeDetails[K] } & { [K in keyof RecipehubRecipeDetails & keyof RecipehubRecipeDetailsAttributes as `attr:${K}`]?: RecipehubRecipeDetailsAttributes[K] } & { [K in keyof RecipehubRecipeDetails & keyof RecipehubRecipeDetailsAttributes as `prop:${K}`]?: RecipehubRecipeDetails[K] };
+        "recipehub-recipe-form": Omit<RecipehubRecipeForm, keyof RecipehubRecipeFormAttributes> & { [K in keyof RecipehubRecipeForm & keyof RecipehubRecipeFormAttributes]?: RecipehubRecipeForm[K] } & { [K in keyof RecipehubRecipeForm & keyof RecipehubRecipeFormAttributes as `attr:${K}`]?: RecipehubRecipeFormAttributes[K] } & { [K in keyof RecipehubRecipeForm & keyof RecipehubRecipeFormAttributes as `prop:${K}`]?: RecipehubRecipeForm[K] };
+        "recipehub-recipe-picker": Omit<RecipehubRecipePicker, keyof RecipehubRecipePickerAttributes> & { [K in keyof RecipehubRecipePicker & keyof RecipehubRecipePickerAttributes]?: RecipehubRecipePicker[K] } & { [K in keyof RecipehubRecipePicker & keyof RecipehubRecipePickerAttributes as `attr:${K}`]?: RecipehubRecipePickerAttributes[K] } & { [K in keyof RecipehubRecipePicker & keyof RecipehubRecipePickerAttributes as `prop:${K}`]?: RecipehubRecipePicker[K] };
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.IntrinsicElements["my-component"] & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "recipehub-category-card": LocalJSX.IntrinsicElements["recipehub-category-card"] & JSXBase.HTMLAttributes<HTMLRecipehubCategoryCardElement>;
+            "recipehub-category-chip": LocalJSX.IntrinsicElements["recipehub-category-chip"] & JSXBase.HTMLAttributes<HTMLRecipehubCategoryChipElement>;
+            "recipehub-category-grid": LocalJSX.IntrinsicElements["recipehub-category-grid"] & JSXBase.HTMLAttributes<HTMLRecipehubCategoryGridElement>;
+            "recipehub-category-section": LocalJSX.IntrinsicElements["recipehub-category-section"] & JSXBase.HTMLAttributes<HTMLRecipehubCategorySectionElement>;
+            "recipehub-cuisine-chip": LocalJSX.IntrinsicElements["recipehub-cuisine-chip"] & JSXBase.HTMLAttributes<HTMLRecipehubCuisineChipElement>;
+            "recipehub-cuisine-section": LocalJSX.IntrinsicElements["recipehub-cuisine-section"] & JSXBase.HTMLAttributes<HTMLRecipehubCuisineSectionElement>;
+            "recipehub-footer": LocalJSX.IntrinsicElements["recipehub-footer"] & JSXBase.HTMLAttributes<HTMLRecipehubFooterElement>;
+            "recipehub-header": LocalJSX.IntrinsicElements["recipehub-header"] & JSXBase.HTMLAttributes<HTMLRecipehubHeaderElement>;
+            "recipehub-hero": LocalJSX.IntrinsicElements["recipehub-hero"] & JSXBase.HTMLAttributes<HTMLRecipehubHeroElement>;
+            "recipehub-meal-plan-day": LocalJSX.IntrinsicElements["recipehub-meal-plan-day"] & JSXBase.HTMLAttributes<HTMLRecipehubMealPlanDayElement>;
+            "recipehub-meal-planner": LocalJSX.IntrinsicElements["recipehub-meal-planner"] & JSXBase.HTMLAttributes<HTMLRecipehubMealPlannerElement>;
+            "recipehub-planned-recipe": LocalJSX.IntrinsicElements["recipehub-planned-recipe"] & JSXBase.HTMLAttributes<HTMLRecipehubPlannedRecipeElement>;
+            "recipehub-recipe-card": LocalJSX.IntrinsicElements["recipehub-recipe-card"] & JSXBase.HTMLAttributes<HTMLRecipehubRecipeCardElement>;
+            "recipehub-recipe-details": LocalJSX.IntrinsicElements["recipehub-recipe-details"] & JSXBase.HTMLAttributes<HTMLRecipehubRecipeDetailsElement>;
+            "recipehub-recipe-form": LocalJSX.IntrinsicElements["recipehub-recipe-form"] & JSXBase.HTMLAttributes<HTMLRecipehubRecipeFormElement>;
+            "recipehub-recipe-picker": LocalJSX.IntrinsicElements["recipehub-recipe-picker"] & JSXBase.HTMLAttributes<HTMLRecipehubRecipePickerElement>;
         }
     }
 }
