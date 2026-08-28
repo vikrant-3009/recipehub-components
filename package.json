@@ -12,8 +12,12 @@
   },
   "license": "MIT",
   "author": "Vikrant Katoch",
-  "type": "commonjs",
+  "type": "module",
   "exports": {
+    ".": {
+      "import": "./dist/custom-elements/index.js",
+      "types": "./dist/custom-elements/index.d.ts"
+    },
     "./custom-elements": {
       "import": "./dist/custom-elements/index.js",
       "types": "./dist/custom-elements/index.d.ts"
