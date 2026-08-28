@@ -4,10 +4,10 @@ export const config: Config = {
   namespace: 'recipe-ui-components',
   globalStyle: 'src/global/_variables.css',
   outputTargets: [
-    {
-      type: 'dist',
-      esmLoaderPath: '../loader',
-    },
+    // {
+    //   type: 'dist',
+    //   esmLoaderPath: '../loader',
+    // },
     {
       type: 'dist-custom-elements',
       dir: 'dist/custom-elements',
@@ -17,9 +17,9 @@ export const config: Config = {
     {
       type: 'docs-readme',
     },
-    {
-      type: 'www',
-      serviceWorker: null, // disable service workers
-    },
+    // {
+    //   type: 'www',
+    //   serviceWorker: null, // disable service workers
+    // },
   ],
 };
