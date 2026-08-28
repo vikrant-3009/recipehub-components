@@ -18,6 +18,10 @@
       "import": "./dist/recipe-ui-components/recipe-ui-components.esm.js",
       "require": "./dist/recipe-ui-components/recipe-ui-components.cjs.js"
     },
+    "./custom-elements": {
+      "import": "./dist/custom-elements/index.js",
+      "types": "./dist/custom-elements/index.d.ts"
+    },
     "./components/*": {
       "import": "./dist/custom-elements/*.js",
       "types": "./dist/custom-elements/*.d.ts"
