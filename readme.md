@@ -1,111 +1,283 @@
-[![Built With Stencil](https://img.shields.io/badge/-Built%20With%20Stencil-16161d.svg?logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjIuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI%2BCjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI%2BCgkuc3Qwe2ZpbGw6I0ZGRkZGRjt9Cjwvc3R5bGU%2BCjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MjQuNywzNzMuOWMwLDM3LjYtNTUuMSw2OC42LTkyLjcsNjguNkgxODAuNGMtMzcuOSwwLTkyLjctMzAuNy05Mi43LTY4LjZ2LTMuNmgzMzYuOVYzNzMuOXoiLz4KPHBhdGggY2xhc3M9InN0MCIgZD0iTTQyNC43LDI5Mi4xSDE4MC40Yy0zNy42LDAtOTIuNy0zMS05Mi43LTY4LjZ2LTMuNkgzMzJjMzcuNiwwLDkyLjcsMzEsOTIuNyw2OC42VjI5Mi4xeiIvPgo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNDI0LjcsMTQxLjdIODcuN3YtMy42YzAtMzcuNiw1NC44LTY4LjYsOTIuNy02OC42SDMzMmMzNy45LDAsOTIuNywzMC43LDkyLjcsNjguNlYxNDEuN3oiLz4KPC9zdmc%2BCg%3D%3D&colorA=16161d&style=flat-square)](https://stenciljs.com)
+# RecipeHub UI Components
 
-# Stencil Component Starter
+A reusable Web Component library built with [Stencil](https://stenciljs.com/) for the **RecipeHub – Recipe Finder & Meal Planner** application.
 
-> This is a starter project for building a standalone Web Components using Stencil.
+The library provides reusable UI components for recipe discovery, recipe details, favorites, custom recipes, and weekly meal planning.
 
-Stencil is a compiler for building fast web apps using Web Components.
+The components are standard Web Components, so they can be consumed by applications built with SvelteKit, React, Angular, Vue, or plain JavaScript. Stencil's distribution model supports publishing the component library to npm and consuming the generated loader from applications.
 
-Stencil combines the best concepts of the most popular frontend frameworks into a compile-time rather than runtime tool. Stencil takes TypeScript, JSX, a tiny virtual DOM layer, efficient one-way data binding, an asynchronous rendering pipeline (similar to React Fiber), and lazy-loading out of the box, and generates 100% standards-based Web Components that run in any browser supporting the Custom Elements specification.
+## Installation
 
-Stencil components are just Web Components, so they work in any major framework or with no framework at all.
-
-## Getting Started
-
-To start building a new web component using Stencil, clone this repo to a new directory:
+Install the package from npm:
 
 ```bash
-git clone https://github.com/stenciljs/component-starter.git my-component
-cd my-component
-git remote rm origin
+npm install @vikrantkatoch/recipehub-ui-components
 ```
 
-and run:
+## Usage with SvelteKit
+
+RecipeHub UI Components can be registered using the generated Stencil loader.
+
+In your SvelteKit `+layout.svelte`:
+
+```svelte
+<script lang="ts">
+	import { onMount } from 'svelte';
+
+	onMount(async () => {
+		const { defineCustomElements } =
+			await import(
+				'@vikrantkatoch/recipehub-ui-components/loader'
+			);
+
+		defineCustomElements();
+	});
+</script>
+
+<slot />
+```
+
+Once the components are registered, they can be used directly in Svelte templates.
+
+For example:
+
+```svelte
+<recipehub-header />
+
+<recipehub-recipe-card
+	recipe={JSON.stringify(recipe)}
+></recipehub-recipe-card>
+```
+
+## Available Components
+
+### Layout & Navigation
+
+* `recipehub-header`
+* `recipehub-footer`
+* `recipehub-hero`
+
+### Categories & Cuisines
+
+* `recipehub-category-section`
+* `recipehub-category-chip`
+* `recipehub-category-grid`
+* `recipehub-cuisine-section`
+* `recipehub-cuisine-chip`
+
+### Recipes
+
+* `recipehub-recipe-card`
+* `recipehub-recipe-details`
+* `recipehub-recipe-form`
+
+### Favorites & User Recipes
+
+The recipe components support favorite actions and custom recipe workflows through component properties and events.
+
+### Weekly Meal Planner
+
+* `recipehub-meal-planner`
+* `recipehub-meal-plan-day`
+* `recipehub-planned-recipe`
+* `recipehub-recipe-picker`
+
+These components work together to provide the weekly meal-planning interface.
+
+## Component Events
+
+Interactive components expose custom events so that the consuming application can handle navigation and application-specific behavior.
+
+Examples include:
+
+```text
+recipeSelect
+favoriteClick
+editClick
+deleteClick
+categorySelect
+cuisineSelect
+viewMore
+addRecipe
+removeRecipe
+previousWeek
+nextWeek
+addToMealPlan
+```
+
+The components emit events but do not contain application-specific routing or persistence logic.
+
+For example, a recipe card can emit:
+
+```text
+recipeSelect
+```
+
+and the consuming SvelteKit application can decide whether to navigate to:
+
+```text
+/recipes/:id
+```
+
+or:
+
+```text
+/my-recipes/:id
+```
+
+This keeps the component library reusable across applications.
+
+## Recipe Data
+
+Recipe-related components accept JSON-serialized data when complex objects are passed through HTML attributes.
+
+For example:
+
+```svelte
+<recipehub-recipe-card
+	recipe={JSON.stringify(recipe)}
+></recipehub-recipe-card>
+```
+
+A recipe can contain information such as:
+
+```ts
+interface Recipe {
+	id: string;
+	name: string;
+	category: string;
+	area: string;
+	image: string;
+	description: string;
+	ingredients: RecipeIngredient[];
+	instructions: string;
+	youtubeUrl: string;
+}
+```
+
+## Example
+
+A simple recipe grid can be implemented using:
+
+```svelte
+<div class="recipe-grid">
+	{#each recipes as recipe}
+		<recipehub-recipe-card
+			recipe={JSON.stringify(recipe)}
+			show-favorite={true}
+		/>
+	{/each}
+</div>
+```
+
+Handle component events in the consuming application:
+
+```svelte
+<recipehub-recipe-card
+	recipe={JSON.stringify(recipe)}
+	onrecipeSelect={handleRecipeSelect}
+	onfavoriteClick={handleFavoriteClick}
+/>
+```
+
+## Weekly Meal Planner
+
+The meal planner is composed of multiple reusable components:
+
+```text
+recipehub-meal-planner
+        │
+        ├── recipehub-meal-plan-day
+        │       │
+        │       └── recipehub-planned-recipe
+        │
+        └── recipehub-recipe-picker
+```
+
+The consuming application is responsible for:
+
+* Maintaining the weekly meal-plan state
+* Persisting planned meals
+* Loading recipes
+* Navigating to recipe details
+* Adding and removing meals
+* Managing application-specific business rules
+
+The Stencil components provide the reusable presentation and interaction layer.
+
+## Development
+
+Clone the repository:
+
+```bash
+git clone https://github.com/vikrant-3009/recipehub-components.git
+cd recipehub-components
+```
+
+Install dependencies:
 
 ```bash
 npm install
-npm start
 ```
 
-To build the component for production, run:
+Start the Stencil development server:
+
+```bash
+npm run start
+```
+
+Build the component library:
 
 ```bash
 npm run build
 ```
 
-To run the unit tests for the components, run:
+Run tests:
 
 ```bash
-npm test
+npm run test
 ```
 
-Need help? Check out our docs [here](https://stenciljs.com/docs/my-first-component).
+Stencil's component-library workflow uses the generated distribution output for publishing and consumption by other applications.
 
-## Naming Components
+## Publishing
 
-When creating new component tags, we recommend _not_ using `stencil` in the component name (ex: `<stencil-datepicker>`). This is because the generated component has little to nothing to do with Stencil; it's just a web component!
+Build the library before publishing:
 
-Instead, use a prefix that fits your company or any name for a group of related components. For example, all of the [Ionic-generated](https://ionicframework.com/) web components use the prefix `ion`.
-
-## Using this component
-
-There are two strategies we recommend for using web components built with Stencil.
-
-The first step for all two of these strategies is to [publish to NPM](https://docs.npmjs.com/getting-started/publishing-npm-packages).
-
-You can read more about these different approaches in the [Stencil docs](https://stenciljs.com/docs/publishing).
-
-### Lazy Loading
-
-If your Stencil project is built with the [`dist`](https://stenciljs.com/docs/distribution) output target, you can import a small bootstrap script that registers all components and allows you to load individual component scripts lazily.
-
-For example, given your Stencil project namespace is called `my-design-system`, to use `my-component` on any website, inject this into your HTML:
-
-```html
-<script type="module" src="https://unpkg.com/my-design-system"></script>
-<!--
-To avoid unpkg.com redirects to the actual file, you can also directly import:
-https://unpkg.com/foobar-design-system@0.0.1/dist/foobar-design-system/foobar-design-system.esm.js
--->
-<my-component first="Stencil" middle="'Don't call me a framework'" last="JS"></my-component>
+```bash
+npm run build
 ```
 
-This will only load the necessary scripts needed to render `<my-component />`. Once more components of this package are used, they will automatically be loaded lazily.
+Update the package version:
 
-You can also import the script as part of your `node_modules` in your applications entry file:
-
-```tsx
-import 'foobar-design-system/dist/foobar-design-system/foobar-design-system.esm.js';
+```bash
+npm version patch
 ```
 
-Check out this [Live Demo](https://stackblitz.com/edit/vitejs-vite-y6v26a?file=src%2Fmain.tsx).
+Publish the package:
 
-### Standalone
-
-If you are using a Stencil component library with `dist-custom-elements`, we recommend importing Stencil components individually in those files where they are needed.
-
-To export Stencil components as standalone components make sure you have the [`dist-custom-elements`](https://stenciljs.com/docs/custom-elements) output target defined in your `stencil.config.ts`.
-
-For example, given you'd like to use `<my-component />` as part of a React component, you can import the component directly via:
-
-```tsx
-import 'foobar-design-system/my-component';
-
-function App() {
-  return (
-    <>
-      <div>
-        <my-component
-          first="Stencil"
-          middle="'Don't call me a framework'"
-          last="JS"
-        ></my-component>
-      </div>
-    </>
-  );
-}
-
-export default App;
+```bash
+npm publish --access public
 ```
 
-Check out this [Live Demo](https://stackblitz.com/edit/vitejs-vite-b6zuds?file=src%2FApp.tsx).
+For example:
+
+```text
+1.0.0 → 1.0.1
+```
+
+Applications using the package can then update to the new version:
+
+```bash
+npm install @vikrantkatoch/recipehub-ui-components@latest
+```
+
+The README displayed on npm is taken from the package's root `README.md` and is updated when a new package version is published.
+
+## Package
+
+**npm:** `@vikrantkatoch/recipehub-ui-components`
+
+## License
+
+MIT
