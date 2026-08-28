@@ -2,13 +2,13 @@
   "name": "@vikrantkatoch/recipehub-ui-components",
   "version": "1.0.1",
   "description": "A reusable web component library for Recipe and Meal Planner Project named RecipeHub.",
-  "homepage": "https://github.com/stenciljs/component-starter#readme",
+  "homepage": "https://github.com/vikrant-3009/recipehub-components#readme",
   "bugs": {
     "url": "https://github.com/stenciljs/component-starter/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stenciljs/component-starter.git"
+    "url": "https://github.com/vikrant-3009/recipehub-components.git"
   },
   "license": "MIT",
   "author": "Vikrant Katoch",
