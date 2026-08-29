@@ -1,4 +1,4 @@
-# RecipeHub UI Components
+# [RecipeHub UI Components](https://github.com/vikrant-3009/recipehub-components)
 
 A reusable Web Component library built with [Stencil](https://stenciljs.com/) for the **RecipeHub – Recipe Finder & Meal Planner** application.
 
@@ -276,7 +276,7 @@ The README displayed on npm is taken from the package's root `README.md` and is 
 
 ## Package
 
-**npm:** `@vikrantkatoch/recipehub-ui-components`
+**npm:** [`@vikrantkatoch/recipehub-ui-components`](https://www.npmjs.com/package/@vikrantkatoch/recipehub-ui-components?activeTab=code)
 
 ## License
 
