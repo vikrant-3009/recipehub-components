@@ -6,6 +6,10 @@ The library provides reusable UI components for recipe discovery, recipe details
 
 The components are standard Web Components, so they can be consumed by applications built with SvelteKit, React, Angular, Vue, or plain JavaScript. Stencil's distribution model supports publishing the component library to npm and consuming the generated loader from applications.
 
+## Published NPM Package
+
+**npm:** [`@vikrantkatoch/recipehub-ui-components`](https://www.npmjs.com/package/@vikrantkatoch/recipehub-ui-components?activeTab=code)
+
 ## Installation
 
 Install the package from npm:
@@ -273,10 +277,6 @@ npm install @vikrantkatoch/recipehub-ui-components@latest
 ```
 
 The README displayed on npm is taken from the package's root `README.md` and is updated when a new package version is published.
-
-## Package
-
-**npm:** [`@vikrantkatoch/recipehub-ui-components`](https://www.npmjs.com/package/@vikrantkatoch/recipehub-ui-components?activeTab=code)
 
 ## License
 
